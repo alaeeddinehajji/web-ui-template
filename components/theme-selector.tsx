@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 import { THEMES, type ThemeName, getTheme, setTheme } from "../lib/theme-manager"
 
 export function ThemeSelector() {
@@ -45,48 +45,36 @@ export function ThemeSelector() {
         {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
       </Button>
 
-      <div className="relative inline-block">
-        <Button
-          onClick={() => setOpen(!open)}
-          variant="outline"
-          className="gap-2"
-        >
-          <Palette className="size-4" />
-          {current.label}
-        </Button>
-
-        {open && (
-          <>
-            <div
-              className="fixed inset-0 z-40"
-              onClick={() => setOpen(false)}
-            />
-            <Card className="absolute right-0 top-full z-50 mt-2 w-56 shadow-lg">
-              <CardContent className="p-2">
-                <div className="space-y-1">
-                  {(Object.entries(THEMES) as Array<[ThemeName, typeof THEMES[ThemeName]]>).map(([key, theme]) => (
-                    <button
-                      key={key}
-                      onClick={() => {
-                        handleThemeChange(key)
-                        setOpen(false)
-                      }}
-                      className={`w-full rounded-md px-3 py-2 text-left text-sm transition-colors ${
-                        currentTheme === key
-                          ? "bg-primary text-primary-foreground"
-                          : "hover:bg-accent hover:text-accent-foreground"
-                      }`}
-                    >
-                      <div className="font-semibold">{theme.label}</div>
-                      <div className="text-xs opacity-75">{theme.description}</div>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </>
-        )}
-      </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className="gap-2"
+          >
+            <Palette className="size-4" />
+            {current.label}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent align="end" className="w-56 p-2">
+          <div className="space-y-1">
+            {(Object.entries(THEMES) as Array<[ThemeName, typeof THEMES[ThemeName]]>).map(([key, theme]) => (
+              <Button
+                key={key}
+                variant={currentTheme === key ? "default" : "ghost"}
+                onClick={() => {
+                  handleThemeChange(key)
+                  setOpen(false)
+                }}
+                className="w-full justify-start flex-col items-start px-3 py-2 text-left h-auto"
+                type="button"
+              >
+                <span className="font-semibold">{theme.label}</span>
+                <span className="text-xs opacity-75">{theme.description}</span>
+              </Button>
+            ))}
+          </div>
+        </PopoverContent>
+      </Popover>
     </div>
   )
 }

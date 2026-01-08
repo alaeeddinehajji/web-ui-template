@@ -29,6 +29,7 @@ These instructions help AI coding agents work effectively in this Next.js (App R
 - Icon sizing: rely on Tailwind size utilities (e.g., `size-4`) and avoid inline styles.
 
 ## shadcn Components Policy
+- Always use shadcn components for all UI elements. If a shadcn component does not exist in [components/ui](components/ui), add it from the official shadcn UI docs (https://ui.shadcn.com/docs) and adapt it to this project’s conventions (Tailwind v4 tokens, `cn()` merging, Radix `Slot`, CVA variants, `data-*` attributes).
 - Source of truth: always use shadcn UI docs at https://ui.shadcn.com/docs for component implementations and APIs.
 - Use only shadcn components: before adding, check for an existing implementation in [components/ui](components/ui) and reuse it (respect any local customizations).
 - If missing: add the component by copying from shadcn docs and adapt to this project’s conventions (Tailwind v4 tokens, `cn()` merging, Radix `Slot`, CVA variants, `data-*` attributes).
