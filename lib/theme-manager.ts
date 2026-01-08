@@ -1,22 +1,26 @@
-export type ThemeName = "claude" | "maude"
+export type ThemeName = "aladdin" | "orange" | "notebook"
 
 const STORAGE_KEY = "aladdin-theme"
 
 export const THEMES: Record<ThemeName, { label: string; description: string }> = {
-  claude: {
-    label: "Claude",
+  aladdin: {
+    label: "Aladdin",
+    description: "Classic corporate theme",
+  },
+  orange: {
+    label: "Orange",
     description: "Modern, minimal theme",
   },
-  maude: {
-    label: "Maude",
+  notebook: {
+    label: "Notebook",
     description: "Artistic, playful theme",
   },
 }
 
 export function getTheme(): ThemeName {
-  if (typeof window === "undefined") return "claude"
+  if (typeof window === "undefined") return "aladdin"
   const stored = localStorage.getItem(STORAGE_KEY) as ThemeName | null
-  return stored && stored in THEMES ? stored : "claude"
+  return stored && stored in THEMES ? stored : "aladdin"
 }
 
 export function setTheme(theme: ThemeName): void {

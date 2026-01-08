@@ -67,7 +67,7 @@ export default function Home() {
             {mounted && <ThemeSelector />}
           </div>
           <CardDescription className="text-base sm:text-lg">
-            Switch between themes and explore the app structure with linked pages.
+            Switch between Aladdin, Orange & Notebook themes, toggle light/dark mode, and explore the app structure.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -101,7 +101,7 @@ export default function Home() {
           <CardHeader>
             <CardTitle>Themes</CardTitle>
             <CardDescription>
-              Choose between claude and maude themes. Preference is saved locally.
+              Choose between Aladdin, Orange, and Notebook themes. Each theme supports both light and dark modes.
             </CardDescription>
           </CardHeader>
           <CardFooter className="justify-between">
