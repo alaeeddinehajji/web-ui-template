@@ -1320,41 +1320,6 @@ export default function ComponentLibrary() {
           </ComponentCard>
         </Section>
 
-        {/* Navigation Section */}
-        <Section id="navigation" title="Navigation">
-          <ComponentCard
-            id="breadcrumb"
-            title="Breadcrumb"
-            description="Show the user's current location. Location: components/ui/breadcrumb.tsx"
-          >
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </ComponentCard>
-        </Section>
-
-        {/* Cards (removed: custom components pending migration to shadcn) */}
-
-        {/* Navigation (removed: custom nav items pending migration) */}
-
-        {/* Avatars (removed: will re-add shadcn Avatar demos) */}
-
-        {/* Notifications (removed: custom notification dot) */}
-
-        {/* Toolbar (removed: custom toolbar components) */}
-
         {/* Composite Components */}
         <Section id="composite-components" title="Composite Components">
           {/* Search Card (removed: custom composite component) */}
@@ -2428,15 +2393,31 @@ export default function ComponentLibrary() {
             description="Draggable resizable panel layouts. Location: components/ui/resizable.tsx"
           >
             <ResizablePanelGroup className="max-w-md rounded-lg border" direction={"horizontal"}>
-              <ResizablePanel defaultSize={50}>
+              <ResizablePanel defaultSize={33}>
                 <div className="flex h-[200px] items-center justify-center p-6">
                   <span className="font-semibold">Sidebar</span>
                 </div>
               </ResizablePanel>
               <ResizableHandle />
-              <ResizablePanel defaultSize={50}>
+              <ResizablePanel defaultSize={34}>
+                <ResizablePanelGroup direction="vertical">
+                  <ResizablePanel defaultSize={20}>
+                    <div className="flex h-full items-center justify-center p-6">
+                      <span className="font-semibold">Top</span>
+                    </div>
+                  </ResizablePanel>
+                  <ResizableHandle />
+                  <ResizablePanel defaultSize={50}>
+                    <div className="flex h-full items-center justify-center p-6">
+                      <span className="font-semibold">Bottom</span>
+                    </div>
+                  </ResizablePanel>
+                </ResizablePanelGroup>
+              </ResizablePanel>
+              <ResizableHandle />
+              <ResizablePanel defaultSize={33}>
                 <div className="flex h-[200px] items-center justify-center p-6">
-                  <span className="font-semibold">Content</span>
+                  <span className="font-semibold">Panel 3</span>
                 </div>
               </ResizablePanel>
             </ResizablePanelGroup>
@@ -2529,7 +2510,7 @@ export default function ComponentLibrary() {
                       Computer Science Student · alaeeddinhajji@gmail.com
                     </p>
                     <div className="flex items-center pt-2">
-                      <Calendar className="mr-2 h-4 w-4 opacity-70" />{" "}
+                      <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />{" "}
                       <span className="text-xs text-muted-foreground">
                         Member since January 2024
                       </span>
@@ -2599,7 +2580,7 @@ export default function ComponentLibrary() {
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup heading="Suggestions">
                   <CommandItem>
-                    <Calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     <span>Calendar</span>
                   </CommandItem>
                   <CommandItem>
