@@ -13,6 +13,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { ThemeSelector } from "@/components/theme-selector"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 type RouteLink = {
   href: string
@@ -95,6 +97,10 @@ export default function Home() {
                 )
               })}
             </div>
+            {/* New Button to Components Page */}
+            <Link href="/components">
+              <Button className="mt-4">See Components Page</Button>
+            </Link>
           </div>
         </CardContent>
       </Card>
