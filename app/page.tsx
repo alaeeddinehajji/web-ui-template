@@ -51,7 +51,10 @@ const ROUTE_LINKS: RouteLink[] = [
 export default function Home() {
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true)
+  }, [])
 
   return (
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-6 px-6 py-10 sm:px-10">
@@ -59,7 +62,7 @@ export default function Home() {
         <CardHeader className="space-y-3">
           <div className="flex items-center justify-between">
             <div>
-              <Badge variant="muted" className="w-fit gap-2">
+              <Badge variant="secondary" className="w-fit gap-2">
                 <Zap className="size-4" /> Aladdin UI
               </Badge>
               <CardTitle className="mt-3 text-4xl sm:text-5xl">Theme Playground</CardTitle>

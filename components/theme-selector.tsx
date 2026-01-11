@@ -14,10 +14,11 @@ export function ThemeSelector() {
   const { theme: mode, setTheme: setMode } = useTheme()
 
   useEffect(() => {
-    setMounted(true)
     const theme = getTheme()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentTheme(theme)
     document.documentElement.setAttribute("data-theme", theme)
+    setMounted(true)
   }, [])
 
   const handleThemeChange = (theme: ThemeName) => {

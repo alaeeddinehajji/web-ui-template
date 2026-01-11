@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteMetadata, themeProviderProps } from "@/lib/site";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = siteMetadata;
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider {...themeProviderProps}>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
